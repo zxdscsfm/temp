@@ -1,6 +1,6 @@
 package emall.api.utils;
 
-public class Contants {
+public class Constants {
     public static final int SUCCESS = 200;
     public static final int SYSTEM_ERROR = 500;
     public static final int NO_RESULT = 510;

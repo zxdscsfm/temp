@@ -2,13 +2,10 @@ package emall.api.service;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.http.server.HttpServerResponse;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.common.io.Files;
-import com.sun.javafx.scene.shape.PathUtils;
 import emall.api.entity.Avatar;
 import emall.api.mapper.AvatarMapper;
-import emall.api.utils.Contants;
+import emall.api.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URLEncoder;
 import java.util.UUID;
 
 @Service
@@ -44,7 +40,7 @@ public class AvatarService extends ServiceImpl<AvatarMapper, Avatar> {
             String type = originalFilename.substring(originalFilename.lastIndexOf(".")+1);
             long size = uploadFile.getSize() / 1024;
             //create a directory to keep avatar
-            File folder = new File(Contants.avatarFolderPath + "/avatar/");
+            File folder = new File(Constants.avatarFolderPath + "/avatar/");
             if(!folder.exists()){
                 folder.mkdir();
             }
@@ -80,7 +76,7 @@ public class AvatarService extends ServiceImpl<AvatarMapper, Avatar> {
      * @param response
      */
     public void download(String fileName, HttpServletResponse response){
-        File file = new File(Contants.avatarFolderPath + fileName);
+        File file = new File(Constants.avatarFolderPath + fileName);
         //try to find out the file from AvatarDirectory
         if(!file.exists()){
             throw  new RuntimeException("File:" + fileName + "not found");

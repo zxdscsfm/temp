@@ -2,7 +2,7 @@ package emall.api.controller;
 
 import emall.api.common.Result;
 import emall.api.service.AvatarService;
-import emall.api.utils.Contants;
+import emall.api.utils.Constants;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,7 +18,7 @@ public class AvatarController {
     @PostMapping("")
     public Result upload(@RequestBody MultipartFile file){
         String url = avatarService.upload(file);
-        return new Result(Contants.SUCCESS, url, "Upload success");
+        return new Result(Constants.SUCCESS, url, "Upload success");
     }
 
     @GetMapping("/{fileName}")
